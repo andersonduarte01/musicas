@@ -3,43 +3,32 @@
 {% load crispy_forms_tags %}
 {% block titulo %}Lista Estilos{% endblock %}
 {% block conteudo %}
-<!-- Jumbotron -->
-<div class="p-5 text-center bg-image rounded-3" style="
-    background-color:#edfdfd;
-    height: 140px;
-    margin-top:51px;
-  ">
-  <div class="mask" style="background-color: rgba(0, 0, 0, 0);">
-    <div class="d-flex justify-content-center align-items-center h-100">
-      <div class="text-dark">
-        <h1 class="display-5 text-primary">Estilos</h1>
-      </div>
-    </div>
-  </div>
+<div class="container-fluid" style="margin-top:60px;">
+    <img src="{% static  'images/estilos.jpeg'%}" class="img-fluid">
 </div>
-<!-- Jumbotron -->
 <div class="container-fluid" style="margin-top:20px;">
     <table class="table table-hover table-responsive">
-  <thead class="bg-primary">
-    <tr>
-      <th scope="col" class="text-white">#</th>
-      <th scope="col" class="text-white">ESTILO</th>
-      <th scope="col" class="text-white">NACIONALIDADE</th>
-      <th scope="col" class="text-white text-center">PESQUISAR</th>
-    </tr>
-  </thead>
-  <tbody>
-    {% for estilo in estilos %}
-    <tr>
-      <th scope="row" class="text-primary">{{forloop.counter}}</th>
-      <td class="text-dark">{{estilo}}</td>
-      <td class="text-dark">{{estilo.nacionalidade}}</td>
-      <td class="text-dark text-center"><a href="#"><i class="bi bi-box-arrow-in-right"></i></a></td>
-    </tr>
-    {% empty %}
-    <p>Vazio</p>
-    {% endfor %}
-  </tbody>
-</table>
-  <hr>
+        <thead class="bg-primary">
+        <tr>
+            <th scope="col" class="text-white">#</th>
+            <th scope="col" class="text-white">ESTILO</th>
+            <th scope="col" class="text-white">NACIONALIDADE</th>
+            <th scope="col" class="text-white text-center">PESQUISAR</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for estilo in estilos %}
+        <tr>
+            <th scope="row" class="text-primary">{{forloop.counter}}</th>
+            <td class="text-dark">{{estilo}}</td>
+            <td class="text-dark">{{estilo.nacionalidade}}</td>
+            <td class="text-dark text-center"><a href="#"><i class="bi bi-box-arrow-in-right"></i></a></td>
+        </tr>
+        </tbody>
+        {% empty %}
+        <p>Vazio</p>
+        {% endfor %}
+    </table>
+</div>
+<hr>
 {% endblock %}

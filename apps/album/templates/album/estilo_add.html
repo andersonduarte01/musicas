@@ -3,21 +3,9 @@
 {% load crispy_forms_tags %}
 {% block titulo %}Adicionar Estilo{% endblock %}
 {% block conteudo %}
-<!-- Jumbotron -->
-<div class="p-5 text-center bg-image rounded-3" style="
-    background-color:#edfdfd;
-    height: 140px;
-    margin-top:51px;
-  ">
-  <div class="mask" style="background-color: rgba(0, 0, 0, 0);">
-    <div class="d-flex justify-content-center align-items-center h-100">
-      <div class="text-dark">
-        <h1 class="display-5 text-primary">Estilo Musical</h1>
-      </div>
-    </div>
-  </div>
+<div class="container-fluid" style="margin-top:60px;">
+    <img src="{% static  'images/estilo.jpeg'%}" class="img-fluid">
 </div>
-<!-- Jumbotron -->
 <div class="container-fluid" style="margin-top:20px;">
   <div class="card" style="background-color: #fdfdfd;">
   <div class="card-body">
