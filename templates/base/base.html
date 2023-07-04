@@ -12,30 +12,30 @@
     {% block estilo %}{% endblock %}
   </head>
   <body class="bg-light">
-    <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light" aria-label="Offcanvas navbar large">
+    <nav class="navbar navbar-expand-lg fixed-top bg-white" aria-label="Offcanvas navbar large">
     <div class="container-fluid">
-      <a class="navbar-brand text-primary" href="{% url 'core:home' %}">DL Solutions</a>
+      <a class="navbar-brand text-primary fw-bolder fst-italic" href="{% url 'core:home' %}">DL Solutions</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar2" aria-controls="offcanvasNavbar2">
         <span class="navbar-toggler-icon success"></span>
       </button>
-      <div class="offcanvas offcanvas-end text-bg-primary" tabindex="-1" id="offcanvasNavbar2" aria-labelledby="offcanvasNavbar2Label">
+      <div class="offcanvas offcanvas-end text-bg-white" tabindex="-1" id="offcanvasNavbar2" aria-labelledby="offcanvasNavbar2Label">
         <div class="offcanvas-header">
-          <h5 class="offcanvas-title" id="offcanvasNavbar2Label">DL Solutions</h5>
+          <h5 class="offcanvas-title text-primary fw-bolder fst-italic" id="offcanvasNavbar2Label">DL Solutions</h5>
           <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
           <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
             <li class="nav-item">
-              <a class="nav-link active text-primary" aria-current="page" href="{% url 'core:home' %}">Home</a>
+              <a class="nav-link active text-primary fw-bolder" aria-current="page" href="{% url 'core:home' %}">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-primary" href="{% url 'album:lista_albuns' %}">Álbuns</a>
+              <a class="nav-link text-primary fw-bolder" href="{% url 'album:lista_albuns' %}">Álbuns</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-primary" href="{% url 'album:lista_estilos' %}">Estilos Musicais</a>
+              <a class="nav-link text-primary fw-bolder" href="{% url 'album:lista_estilos' %}">Estilos Musicais</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-primary" href="#">Contato</a>
+              <a class="nav-link text-primary fw-bolder" href="#">Contato</a>
             </li>
           </ul>
         </div>
