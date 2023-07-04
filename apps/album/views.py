@@ -20,9 +20,6 @@ class ListaEstilos(ListView):
     template_name = 'album/lista_estilos.html'
     context_object_name = 'estilos'
 
-    def get_queryset(self):
-        return Estilo.objects.all()
-
 
 class AddAlbum(LoginRequiredMixin, CreateView):
     model = Album
@@ -44,9 +41,6 @@ class ListaAlbuns(ListView):
     model = Album
     template_name = 'album/lista_albuns.html'
     context_object_name = 'albuns'
-
-    def get_queryset(self):
-        return Album.objects.all()
 
 
 class MusicaView(FormView):
