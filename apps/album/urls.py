@@ -9,5 +9,5 @@ urlpatterns = [
     path('lista/estilos/', views.ListaEstilos.as_view(), name='lista_estilos'),
     path('adicionar/', views.AddAlbum.as_view(), name='add_album'),
     path('lista/', views.ListaAlbuns.as_view(), name='lista_albuns'),
-    path('<int:album>/songs/', views.MusicasLista.as_view(), name='musicas'),
+    path('songs/<int:album>/', views.MusicasLista.as_view(), name='musicas'),
 ]

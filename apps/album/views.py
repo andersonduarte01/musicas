@@ -1,6 +1,6 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.views.generic import ListView, TemplateView
 from django.views.generic.edit import FormView, CreateView, UpdateView
 from .forms import MusicaForm
@@ -46,7 +46,9 @@ class ListaAlbuns(ListView):
 class MusicaView(FormView):
     form_class = MusicaForm
     template_name = "album/add_musica.html"  # Replace with your template.
-    success_url = "/"  # Replace with your URL or reverse().
+
+    def get_success_url(self):
+        return reverse('album:musicas', kwargs={'album': self.kwargs['album']})
 
     def post(self, request, *args, **kwargs):
         form_class = self.get_form_class()
