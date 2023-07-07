@@ -42,6 +42,7 @@ class ListaAlbuns(ListView):
     model = Album
     template_name = 'album/lista_albuns.html'
     context_object_name = 'albuns'
+    ordering = ('-atualizado',)
 
 
 class MusicaView(FormView):
@@ -101,7 +102,7 @@ class Nacionalidade(ListView):
 
     def get_queryset(self):
         generos = Estilo.objects.filter(nacionalidade=self.kwargs['nacionalidade'])
-        return Album.objects.filter(estilo__in=generos)
+        return Album.objects.filter(estilo__in=generos).order_by('-atualizado')
 
 
 class Genero(ListView):
@@ -112,7 +113,7 @@ class Genero(ListView):
 
     def get_queryset(self):
         generos = Estilo.objects.filter(estilo=self.kwargs['estilo'])
-        return Album.objects.filter(estilo__in=generos)
+        return Album.objects.filter(estilo__in=generos).order_by('-atualizado')
 
 
 
