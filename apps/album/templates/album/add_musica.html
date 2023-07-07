@@ -7,13 +7,13 @@
 <script src="https://code.jquery.com/jquery-3.7.0.js"
         integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
 {% endblock %}
-<div class="container-fluid" style="margin-top:60px;">
-    <img src="{% static  'images/musica.jpeg'%}" class="img-fluid">
+<div class="container-fluid">
+    <img src="{% static  'images/musica.png'%}" class="img-fluid">
 </div>
 <div class="container" style="margin-top:20px;">
   <div class="card">
   <div class="card-body">
-    <h4 class="card-title text-center">Música(s)</h4>
+    <h4 class="card-title text-center">Adicionar</h4>
     <hr>
     <form method="post" enctype="multipart/form-data">
     {% csrf_token %}

@@ -6,6 +6,7 @@ from django.views.generic.edit import FormView, CreateView, UpdateView
 from .forms import MusicaForm
 from .models import Estilo, Album, Musica
 from ..core.models import Usuario
+import unicodedata
 
 
 class AddEstilo(CreateView):
@@ -64,7 +65,14 @@ class MusicaView(FormView):
 
         for file in files:
             m = f'{file}'
+            m2 = f'{file}'
             titulo_musica = m.replace(".mp3", "")
+
+            processamento_2 = unicodedata.normalize("NFD", m2)
+            processamento_2 = processamento_2.encode("ascii", "ignore")
+            processamento_2 = processamento_2.decode("utf-8")
+
+            file.name = processamento_2
             musica = Musica.objects.create(musica=titulo_musica, arquivo_musical=file, album=album)
         return super().form_valid(form)
 
@@ -83,6 +91,28 @@ class MusicasLista(ListView):
         album = Album.objects.get(pk=self.kwargs['album'])
         context['album'] = album
         return context
+
+
+class Nacionalidade(ListView):
+    model = Album
+    template_name = 'album/generos.html'
+    context_object_name = 'albuns'
+
+
+    def get_queryset(self):
+        generos = Estilo.objects.filter(nacionalidade=self.kwargs['nacionalidade'])
+        return Album.objects.filter(estilo__in=generos)
+
+
+class Genero(ListView):
+    model = Album
+    template_name = 'album/generos_especificos.html'
+    context_object_name = 'albuns'
+
+
+    def get_queryset(self):
+        generos = Estilo.objects.filter(estilo=self.kwargs['estilo'])
+        return Album.objects.filter(estilo__in=generos)
 
 
 

@@ -13,15 +13,15 @@ class Estilo(models.Model):
 
     ]
 
-    estilo = models.CharField(verbose_name='Estilo', max_length=155)
+    estilo = models.CharField(verbose_name='Gênero', max_length=155)
     nacionalidade = models.CharField(verbose_name='Nacionalidade', max_length=50, choices=NACIONALIDADE)
 
     def __str__(self):
         return self.estilo
 
     class Meta:
-        verbose_name = 'Estilo'
-        verbose_name_plural = 'Estilos'
+        verbose_name = 'Gênero'
+        verbose_name_plural = 'Gêneros'
 
 
 class Album(models.Model):

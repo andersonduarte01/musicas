@@ -3,8 +3,8 @@
 {% load crispy_forms_tags %}
 {% block titulo %}Lista Estilos{% endblock %}
 {% block conteudo %}
-<div class="container-fluid" style="margin-top:60px;">
-    <img src="{% static  'images/estilos.jpeg'%}" class="img-fluid">
+<div class="container-fluid">
+    <img src="{% static  'images/generos.png'%}" class="img-fluid">
 </div>
 <div class="container-fluid" style="margin-top:20px;">
     <table class="table table-hover table-responsive">
@@ -20,7 +20,7 @@
         <tr>
             <th scope="row" class="text-primary">{{forloop.counter}}</th>
             <td class="text-dark">{{estilo}}</td>
-            <td class="text-dark text-center"><a href="#"><i class="bi bi-box-arrow-in-right"></i></a></td>
+            <td class="text-dark text-center"><a href="{% url 'album:genero' estilo=estilo %}"><i class="bi bi-box-arrow-in-right"></i></a></td>
         </tr>
         </tbody>
         {% empty %}
