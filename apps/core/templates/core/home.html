@@ -44,5 +44,29 @@
         <span class="visually-hidden">Next</span>
     </button>
 </div>
+<div class="container bg-white">
+    <h1 class="display-6 text-center text-primary">Álbuns Recentes</h1>
+</div>
+<div class="album py-5 bg-light">
+    <div class="container bg-white">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            {% for album in albuns %}
+            <div class="col">
+                <div class="card shadow-sm">
+                    <img src="{{album.capa.thumbnail.url}}">
+                    <div class="card-body">
+                        <h6 class="card-text text-center fw-semibold text-primary">{{album}}</h6>
+                                <div class="d-grid gap-2">
+                                    <a href="{% url 'album:musicas' album=album.id %}" class="btn btn-block btn-outline-primary btn-sm ">Ver Álbum</a>
+                                 </div>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <p>Vazio..</p>
+            {% endfor %}
+        </div>
+    </div>
+</div>
 
 {% endblock %}
