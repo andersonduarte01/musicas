@@ -12,7 +12,7 @@ class Index(ListView):
     context_object_name = 'albuns'
 
     def get_queryset(self):
-        return Album.objects.filter().order_by('-atualizado')[:7]
+        return Album.objects.filter().order_by('-atualizado')[:6]
 
 
 
