@@ -13,4 +13,9 @@ urlpatterns = [
     ####
     path('genero/<str:nacionalidade>/', views.Nacionalidade.as_view(), name='nacionalidade'),
     path('<str:estilo>/genero/', views.Genero.as_view(), name='genero'),
+    ## REST API ##
+
+    path('api/v1/estilos/', views.EstiloApiView.as_view(), name='estilos_serial'),
+    path('api/v1/albuns/', views.AlbumApiView.as_view(), name='albuns_serial'),
+    path('musicas_seriais/', views.MusicaApiView.as_view(), name='musicas_serial'),
 ]

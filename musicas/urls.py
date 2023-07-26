@@ -9,4 +9,5 @@ urlpatterns = [
     path('', include('apps.core.urls', namespace='core')),
     path('album/', include('apps.album.urls', namespace='album')),
     path('users/', include('apps.usuarios.urls', namespace='users')),
+    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

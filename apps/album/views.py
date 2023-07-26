@@ -118,3 +118,29 @@ class Genero(ListView):
 
 
 
+#### DJANGO REST FRAMEWORK ####
+
+
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from .serializers import EstiloSerializer, AlbumSerializer, MusicaSerializer
+
+class EstiloApiView(APIView):
+    def get(self, request):
+        estilos = Estilo.objects.all()
+        serializer = EstiloSerializer(estilos, many=True)
+        return Response(serializer.data)
+
+
+class AlbumApiView(APIView):
+    def get(self, request):
+        albuns = Album.objects.all()
+        serializer = AlbumSerializer(albuns, many=True)
+        return Response(serializer.data)
+
+
+class MusicaApiView(APIView):
+    def get(self, request):
+        musicas = Musica.objects.all()
+        serializer = MusicaSerializer(musicas, many=True)
+        return Response(serializer.data)
