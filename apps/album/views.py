@@ -3,6 +3,9 @@ from django.shortcuts import render
 from django.urls import reverse_lazy, reverse
 from django.views.generic import ListView, TemplateView
 from django.views.generic.edit import FormView, CreateView, UpdateView
+from rest_framework import status
+
+from . import serializers
 from .forms import MusicaForm
 from .models import Estilo, Album, Musica
 from ..core.models import Usuario
@@ -133,14 +136,33 @@ class EstiloApiView(APIView):
 
 
 class AlbumApiView(APIView):
+
+    """
+    API ALBUNS MUSICAIS
+    """
+
     def get(self, request):
         albuns = Album.objects.all()
         serializer = AlbumSerializer(albuns, many=True)
         return Response(serializer.data)
 
+    def post(self, request):
+        serializer = AlbumSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+
 
 class MusicaApiView(APIView):
     def get(self, request):
         musicas = Musica.objects.all()
+        serializer = MusicaSerializer(musicas, many=True)
+        return Response(serializer.data)
+
+
+class LewisApiView(APIView):
+    def get(self, request):
+        album = Album.objects.get(id=2)
+        musicas = Musica.objects.filter(album=album)
         serializer = MusicaSerializer(musicas, many=True)
         return Response(serializer.data)

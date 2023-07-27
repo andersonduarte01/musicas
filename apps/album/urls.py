@@ -17,5 +17,6 @@ urlpatterns = [
 
     path('api/v1/estilos/', views.EstiloApiView.as_view(), name='estilos_serial'),
     path('api/v1/albuns/', views.AlbumApiView.as_view(), name='albuns_serial'),
-    path('musicas_seriais/', views.MusicaApiView.as_view(), name='musicas_serial'),
+    path('api/v1/musicas/', views.MusicaApiView.as_view(), name='musicas_serial'),
+    path('api/v1/musicas/6', views.LewisApiView.as_view(), name='lewis_serial'),
 ]
