@@ -10,6 +10,7 @@
     <!-- Google tag (gtag.js) -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4838467540164243"
      crossorigin="anonymous"></script>
+    <script type='text/javascript' src='//pl20178079.highwaycpmrevenue.com/f1/e2/17/f1e21787e9386f8c4f1e82f75450b943.js'></script>
 
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -129,13 +130,15 @@
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item text-primary fw-semibold" href="#">PERFIL</a></li>
                 <li><a class="dropdown-item text-primary fw-semibold" href="{% url 'logout' %}">SAIR</a></li>
+              </ul>
                 {% else %}
               <a class="nav-link dropdown-toggle text-primary fw-bolder" href="#" data-bs-toggle="dropdown" aria-expanded="false">CADASTRO/LOGIN</a>
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item text-primary fw-semibold" href="{% url 'users:adicionar' %}">CADASTRE-SE</a></li>
                 <li><a class="dropdown-item text-primary fw-semibold" href="{% url 'login' %}">LOGIN</a></li>
-                {% endif %}
               </ul>
+                {% endif %}
+
             </li>
           </ul>
         </div>
