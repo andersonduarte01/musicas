@@ -1,10 +1,11 @@
-from rest_framework import generics
-from .serializers import EstiloSerializer, AlbumSerializer, MusicaSerializer
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.shortcuts import render
 from django.urls import reverse_lazy, reverse
-from django.views.generic import ListView
-from django.views.generic.edit import FormView, CreateView
+from django.views.generic import ListView, TemplateView
+from django.views.generic.edit import FormView, CreateView, UpdateView
+from rest_framework import status
 
+from . import serializers
 from .forms import MusicaForm
 from .models import Estilo, Album, Musica
 from ..core.models import Usuario
@@ -118,33 +119,57 @@ class Genero(ListView):
         return Album.objects.filter(estilo__in=generos).order_by('-atualizado')
 
 
-###### SERIALIZERS #####
-
-class EstilosApiView(generics.ListCreateAPIView):
-    queryset = Estilo.objects.all()
-    serializer_class = EstiloSerializer
 
 
-class EstiloApiView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Estilo.objects.all()
-    serializer_class = EstiloSerializer
+#### DJANGO REST FRAMEWORK ####
 
 
-class AlbunsApiView(generics.ListCreateAPIView):
-    queryset = Album.objects.all()
-    serializer_class = AlbumSerializer
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from .serializers import EstiloSerializer, AlbumSerializer, MusicaSerializer
 
 
-class AlbumApiView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Album.objects.all()
-    serializer_class = AlbumSerializer
+class EstiloApiView(APIView):
+    def get(self, request):
+        estilos = Estilo.objects.all()
+        serializer = EstiloSerializer(estilos, many=True)
+        return Response(serializer.data)
+
+    def post(self, request):
+        serializer = EstiloSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 
-class MusicasApiView(generics.ListCreateAPIView):
-    queryset = Musica.objects.all()
-    serializer_class = MusicaSerializer
+class AlbumApiView(APIView):
+
+    """
+    API ALBUNS MUSICAIS
+    """
+
+    def get(self, request):
+        albuns = Album.objects.all()
+        serializer = AlbumSerializer(albuns, many=True)
+        return Response(serializer.data)
+
+    def post(self, request):
+        serializer = AlbumSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 
-class MusicaApiView(generics.ListCreateAPIView):
-    queryset = Musica.objects.all()
-    serializer_class = MusicaSerializer
+class MusicaApiView(APIView):
+    def get(self, request):
+        musicas = Musica.objects.all()
+        serializer = MusicaSerializer(musicas, many=True)
+        return Response(serializer.data)
+
+
+class LewisApiView(APIView):
+    def get(self, request):
+        album = Album.objects.get(id=2)
+        musicas = Musica.objects.filter(album=album)
+        serializer = MusicaSerializer(musicas, many=True)
+        return Response(serializer.data)
