@@ -146,5 +146,9 @@ class MusicasApiView(generics.ListCreateAPIView):
 
 
 class MusicaApiView(generics.ListCreateAPIView):
-    queryset = Musica.objects.all()
     serializer_class = MusicaSerializer
+
+    def get_queryset(self):
+        album = Album.objects.get(pk=self.kwargs['pk'])
+        return Musica.objects.filter(album=album)
+
