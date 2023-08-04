@@ -135,6 +135,13 @@ class AlbunsApiView(generics.ListCreateAPIView):
     serializer_class = AlbumSerializer
 
 
+class AlbunsEstiloApiView(generics.ListCreateAPIView):
+    serializer_class = AlbumSerializer
+
+    def get_queryset(self):
+        estilo = Estilo.objects.get(pk=self.kwargs['pk'])
+        return Album.objects.filter(estilo=estilo)
+
 class AlbumApiView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Album.objects.all()
     serializer_class = AlbumSerializer
